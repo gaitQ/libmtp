@@ -9406,3 +9406,42 @@ int LIBMTP_Custom_Operation(LIBMTP_mtpdevice_t *device, uint16_t code, int n_par
 
   return 0;
 }
+
+int LIBMTP_Custom_Operation_Send(LIBMTP_mtpdevice_t *device, uint16_t code, unsigned char *data, uint64_t size)
+{
+  PTPParams *params = (PTPParams *) device->params;
+  PTPContainer ptp;
+  uint16_t ret;
+
+  ptp.Code = code;
+  ptp.Nparam = 0;
+
+
+	ret = ptp_transaction(params, &ptp, PTP_DP_SENDDATA, size, &data, NULL);
+
+  if (ret != PTP_RC_OK) {
+    add_ptp_error_to_errorstack(device, ret, "LIBMTP_Custom_Operation_Send(): failed to execute operation.");
+    return -1;
+  }
+
+  return 0;
+}
+
+int LIBMTP_Custom_Operation_Get(LIBMTP_mtpdevice_t *device, uint16_t code, unsigned char **data, unsigned int *size)
+{
+  PTPParams *params = (PTPParams *) device->params;
+  PTPContainer ptp;
+  uint16_t ret;
+
+  ptp.Code = code;
+  ptp.Nparam = 0;
+
+  ret = ptp_transaction(params, &ptp, PTP_DP_GETDATA, 0, data, size);
+
+  if (ret != PTP_RC_OK) {
+    add_ptp_error_to_errorstack(device, ret, "LIBMTP_Custom_Operation_Get(): failed to execute operation.");
+    return -1;
+  }
+
+  return 0;
+}
