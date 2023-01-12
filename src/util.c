@@ -50,13 +50,16 @@
 void device_unknown(const int dev_number, const int id_vendor, const int id_product)
 {
   // This device is unknown to the developers
-  LIBMTP_ERROR("Device %d (VID=%04x and PID=%04x) is UNKNOWN in libmtp v%s.\n",
-    dev_number,
-    id_vendor,
-    id_product,
-    LIBMTP_VERSION_STRING);
-  LIBMTP_ERROR("Please report this VID/PID and the device model to the "
-               "libmtp development team\n");
+  
+  // Removed by RB as these are annoying messages and there's no way to suppress them
+  //LIBMTP_ERROR("Device %d (VID=%04x and PID=%04x) is UNKNOWN in libmtp v%s.\n",
+  //  dev_number,
+  //  id_vendor,
+  //  id_product,
+  //  LIBMTP_VERSION_STRING);
+  //LIBMTP_ERROR("Please report this VID/PID and the device model to the "
+  //             "libmtp development team\n");
+
   /*
    * Trying to get iManufacturer or iProduct from the device at this
    * point would require opening a device handle, that we don't want
