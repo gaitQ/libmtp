@@ -1969,14 +1969,14 @@ LIBMTP_mtpdevice_t *LIBMTP_Open_Raw_Device_Uncached(LIBMTP_raw_device_t *rawdevi
   current_params->cd_locale_to_ucs2 = iconv_open("UTF-16LE", "UTF-8");
   current_params->cd_ucs2_to_locale = iconv_open("UTF-8", "UTF-16LE");
 
-  if(current_params->cd_locale_to_ucs2 == (iconv_t) -1 ||
-     current_params->cd_ucs2_to_locale == (iconv_t) -1) {
-    LIBMTP_ERROR("LIBMTP PANIC: Cannot open iconv() converters to/from UCS-2!\n"
-	    "Too old stdlibc, glibc and libiconv?\n");
-    free(current_params);
-    free(mtp_device);
-    return NULL;
-  }
+  // if(current_params->cd_locale_to_ucs2 == (iconv_t) -1 ||
+  //    current_params->cd_ucs2_to_locale == (iconv_t) -1) {
+  //   LIBMTP_ERROR("LIBMTP PANIC: Cannot open iconv() converters to/from UCS-2!\n"
+	//     "Too old stdlibc, glibc and libiconv?\n");
+  //   free(current_params);
+  //   free(mtp_device);
+  //   return NULL;
+  // }
 #endif
   mtp_device->params = current_params;
 
@@ -7323,7 +7323,7 @@ void LIBMTP_destroy_folder_t(LIBMTP_folder_t *folder)
  * specified id.
  *
  * @param folderlist list of folders to search
- * @id id of folder to look for
+ * @param id of folder to look for
  * @return a folder or NULL if not found
  */
 LIBMTP_folder_t *LIBMTP_Find_Folder(LIBMTP_folder_t *folderlist, uint32_t id)
