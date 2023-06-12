@@ -118,3 +118,4 @@ LIBMTP_Check_Capability
 LIBMTP_Custom_Operation
 LIBMTP_Custom_Operation_Send
 LIBMTP_Custom_Operation_Get
+LIBMTP_Custom_Operation_Get_arg

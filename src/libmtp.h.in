@@ -1083,6 +1083,7 @@ int LIBMTP_Handle_Events_Timeout_Completed(struct timeval *, int *);
 int LIBMTP_Custom_Operation(LIBMTP_mtpdevice_t *, uint16_t, int, ...);
 int LIBMTP_Custom_Operation_Send(LIBMTP_mtpdevice_t *device, uint16_t code, unsigned char *data, uint64_t size);
 int LIBMTP_Custom_Operation_Get(LIBMTP_mtpdevice_t *device, uint16_t code, unsigned char **data, unsigned int *size);
+int LIBMTP_Custom_Operation_Get_arg(LIBMTP_mtpdevice_t *device, uint16_t code, uint32_t arg, unsigned char **data, unsigned int *size);
 
 /** @} */
 
